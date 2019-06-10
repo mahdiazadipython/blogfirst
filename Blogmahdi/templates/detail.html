@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="col-md-8">
+
+    <div class="card mb-4 mt-4">
+        <div class="card-body">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+
+                    <div class="col-md-4">
+                        <div class="card-body">
+                            <h5 align="right" class="card-title">{{ object.entry_title }}</h5>
+                            <p dir="rtl" class="card-text" </p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p dir="rtl" align="right" class="card-text">{{ object.entry_text}}
+                <a href="{% url 'blog-home' %}">صفحه قبل</a>
+            </p>
+
+
+        </div>
+
+        <div class="card-footer text-muted">
+            Posted on 2018 by
+            <span class="text-info mr-2">{{object.entry_author}}</span>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}

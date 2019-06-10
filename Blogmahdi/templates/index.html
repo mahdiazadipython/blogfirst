@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="col-md-8">
+    {% for entry in blog_entries %}
+    <div class="card mb-4 mt-4">
+        <div class="card-body">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+
+                    <div class="col-md-4">
+                        <div class="card-body">
+                            <h5 align="right" class="card-title">{{ entry.entry_title }}</h5>
+                            <p dir="rtl" class="card-text" </p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p align="right" class="card-text">{{ entry.entry_text|truncatechars:100 }}
+            </p>
+            <a href="{% url 'entry-detail' entry.pk %}" class="btn btn-primary">ادامه &rarr;</a>
+
+        </div>
+
+        <div class="card-footer text-muted">
+            Posted on 2018 by
+            <span class="text-info mr-2">{{entry.entry_author}}</span>
+
+        </div>
+
+    </div>
+    {% endfor %} {% if is_paginated %}
+    <ul class="pagination justfy-content-center mb-4">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+        </li>
+        {% endif %} {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next Page</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
