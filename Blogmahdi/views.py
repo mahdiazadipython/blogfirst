@@ -9,7 +9,7 @@ class HomeView(LoginRequiredMixin,ListView):
     template_name = 'index.html'
     context_object_name = "blog_entries"
     ordering = ['-entry_data']
-    paginate_by = 1
+    paginate_by = 2
 
 
 
